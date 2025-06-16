@@ -29,11 +29,10 @@ jobs:
           flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
           flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
       - name: Startup HTTP Server for pipeline tests
-        run: |
-          cd directorydata_service
-          python manage.py migrate
-          python manage.py runserver &
-          sleep 5
+        uses: Eun/http-server-action@v1.0.11
+        with:
+          directory: .
+          port: 5500
       - name: Run tests
         run: |
           pytest tests/test_smokeTest.py
