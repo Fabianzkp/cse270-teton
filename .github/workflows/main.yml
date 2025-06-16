@@ -36,7 +36,7 @@ jobs:
           sleep 5
       - name: Run tests
         run: |
-          pytest tests/test_users.py
+          pytest tests/test_smokeTest.py
   analyze:
     needs: build
     name: Analyze
